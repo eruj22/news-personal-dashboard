@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect,useState } from "react";
+import CardHolder from "./components/CardHolder";
 
-function App() {
+const url = "http://content.guardianapis.com/sections?api-key=ac6442cb-67e3-440e-8bca-9aee70a5f232"
+
+const App = () => {
+  const [newsSections,setNewsSection] = useState([])
+
+  const fetchNews = async () => {
+    const response = await fetch(url)
+      .then(data => data.json())
+      .catch(error => error)
+    return response
+  }
+
+  useEffect(() => {
+    fetchNews().then(news => {
+      if (news.response.results) {
+        setNewsSection(news.response.results)
+      }
+    })
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <CardHolder />
+    </main>
   );
-}
+};
 
 export default App;
