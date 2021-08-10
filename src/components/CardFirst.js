@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import globeDesktop from "../assets/globe-desktop.jpg";
 import globeMobile from "../assets/globe-mobile.jpg";
 import { AiOutlineRight } from "react-icons/ai";
-import {SaveToLocalStorage} from "../utils/helpers"
+import {saveToLocalStorage} from "../utils/helpers"
 
 const CardFirst = ({ setNext }) => {
   const [value, setValue] = useState("");
@@ -11,7 +11,8 @@ const CardFirst = ({ setNext }) => {
     setNext(2);
   };
 
-  SaveToLocalStorage("name", value);
+  // logic for checking if something is saved on local storage
+  saveToLocalStorage("name", value);
 
   const onChange = (e) => {
     setValue(e.target.value);

@@ -1,6 +1,45 @@
+@import "./colors.scss";
+
 button {
   border: none;
   background-color: transparent;
   cursor: pointer;
   font-size: 20px;
 }
+
+.tech {
+  background-color: $clr-tech;
+}
+
+.automobiles {
+  background-color: $clr-automobiles;
+}
+
+.science {
+  background-color: $clr-science;
+}
+
+.sports {
+  background-color: $clr-sports;
+}
+
+.business {
+  background-color: $clr-business;
+}
+
+.movies {
+  background-color: $clr-movies;
+}
+
+.travel {
+  background-color: $clr-travel;
+}
+
+.fashion {
+  background-color: $clr-fashion;
+}
+
+.health {
+  background-color: $clr-health;
+}
+

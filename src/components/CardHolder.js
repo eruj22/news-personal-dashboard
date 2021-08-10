@@ -14,7 +14,7 @@ function CardHolder() {
     case 3:
       return <CardThird setNext={setNext} />;
     default:
-      return <CardMain />;
+      return <CardMain setNext={setNext} />;
   }
 }
 
