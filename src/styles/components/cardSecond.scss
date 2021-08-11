@@ -35,13 +35,15 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 
-    .topic-btn {
-      width: 105px;
-      background-color: #8c8c8c;
-      color: white;
-      border-radius: 10px;
-    }
   }
+}
+
+.topic-btn {
+  width: 105px;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: .3rem 0;
 }
 
 @media only screen and (max-width: 1200px) {

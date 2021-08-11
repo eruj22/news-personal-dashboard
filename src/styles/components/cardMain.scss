@@ -1,0 +1,115 @@
+.mainCard {
+  width: 90%;
+  max-width: 1400px;
+  min-height: 730px;
+  margin: 0 auto;
+  background-color: #f4f7f9;
+  border-radius: 2rem;
+  padding: 3rem 0;
+
+  h1 {
+    font-size: 36px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    width: 92%;
+    margin: 0 auto;
+
+    div {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    
+    input {
+      width: 400px;
+    }
+
+    .search-btn {
+      position: absolute;
+      color: #fff;
+      width: 50px;
+      height: 40px;
+      background-color: #fb85f9;
+      top: 37px;
+      right: 0;
+      border-bottom-left-radius: 1.7rem;
+      border-bottom-right-radius: 1.7rem;
+      border-top-right-radius: 1.7rem;
+    }
+  }
+  .icon {
+    width: 70px;
+  }
+  
+  .part {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .part-a {
+    grid-area: part-a;
+  }
+  .part-b {
+    grid-area: part-b;
+  }
+  .part-c {
+    grid-area: part-c;
+  }
+  .part-d {
+    grid-area: part-d;
+  }
+  .part-e {
+    grid-area: part-e;
+  }
+  .part-weather {
+    grid-area: part-weather;
+    text-align: center;
+    font-weight: bold;
+
+    &-temperature {
+      font-size: 40px;
+    }
+
+    &-location {
+      margin-top: 1.5rem;
+      font-size: 22px;
+    }
+  }
+  .part-setting {
+    grid-area: part-setting;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .part-pic {
+    grid-area: part-pic;
+
+    img {
+      display: block;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
+  
+  .card {
+    display: grid;
+    width: 86%;
+    margin: 0 auto;
+    padding: 0 1.5rem 1.5rem;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: auto;
+    gap: 1rem;
+    grid-template-areas: 
+      "part-a part-a part-a part-a part-pic part-pic part-pic"
+      "part-b part-b part-c part-c part-d part-d part-weather"
+      "part-e part-e part-e part-e part-e part-setting part-weather";
+  }
+}
