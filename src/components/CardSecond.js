@@ -4,7 +4,7 @@ import globeMobile from "../assets/globe-mobile.jpg";
 import { AiOutlineRight } from "react-icons/ai";
 import { saveToLocalStorage } from "../utils/helpers"
 
-const CardSecond = ({ setNext, mewsSections }) => {
+const CardSecond = ({ setNext }) => {
   const [ chosenTopics, setChosenTopics ] = useState([])
 
   const nextCard = () => {
@@ -30,7 +30,7 @@ const CardSecond = ({ setNext, mewsSections }) => {
         <h2>Welcome to your dashboard</h2>
         <span>Choose the topics for your news feed</span>
         <div className="card2-topics">
-          <button className="topic-btn tech" onClick={e => saveTopics(e)}>technology</button>
+          <button className="topic-btn technology" onClick={e => saveTopics(e)}>technology</button>
           <button className="topic-btn automobiles" onClick={e => saveTopics(e)}>automobiles</button>
           <button className="topic-btn science" onClick={e => saveTopics(e)}>science</button>
           <button className="topic-btn sports" onClick={e => saveTopics(e)}>sports</button>

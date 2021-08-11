@@ -11,6 +11,10 @@
     font-size: 36px;
   }
 
+  p {
+    margin: 0;
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;
@@ -46,6 +50,8 @@
   
   .part {
     background-color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
   }
 
   .part-a {
@@ -65,6 +71,17 @@
   }
   .part-weather {
     grid-area: part-weather;
+    text-align: center;
+    font-weight: bold;
+
+    &-temperature {
+      font-size: 40px;
+    }
+
+    &-location {
+      margin-top: 1.5rem;
+      font-size: 22px;
+    }
   }
   .part-setting {
     grid-area: part-setting;
@@ -74,6 +91,12 @@
   }
   .part-pic {
     grid-area: part-pic;
+
+    img {
+      display: block;
+      max-width: 300px;
+      margin: 0 auto;
+    }
   }
   
   .card {
@@ -88,10 +111,5 @@
       "part-a part-a part-a part-a part-pic part-pic part-pic"
       "part-b part-b part-c part-c part-d part-d part-weather"
       "part-e part-e part-e part-e part-e part-setting part-weather";
-  }
-
-  .part {
-    // background-color: #f4f7f9;
-    border-radius: 2rem;
   }
 }

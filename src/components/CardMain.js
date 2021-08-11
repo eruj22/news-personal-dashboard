@@ -1,34 +1,14 @@
-import React, {useEffect,useState} from 'react'
+import React from 'react'
 import { getFromLocalStorage } from "../utils/helpers"
 import Sunny from "../assets/cloudy_sunny.png"
 import Settings from "../assets/settings.png"
 import { FaSearch } from "react-icons/fa"
+import CardNews from "./CardNews"
+import ImageOfTheDay from './ImageOfTheDay'
+import LocalWeather from './LocalWeather'
 
-const apiKey = "yekzyxA7dRlH6VWlHVaAoANRWQRIunGr";
-// const url = "http://content.guardianapis.com/sections?api-key=ac6442cb-67e3-440e-8bca-9aee70a5f232"
-const url = `https://api.nytimes.com/svc/topstories/v2/health.json?api-key=${apiKey}`
-
-function CardMain({ setNext }) {
+function CardMain({ setNext, newsSections, imageOfTheDay, localWeather }) {
   const name = getFromLocalStorage('name');
-
-  const [newsSections,setNewsSection] = useState([])
-
-  const fetchNews = async () => {
-    const response = await fetch(url)
-      .then(data => data.json())
-      .catch(error => error)
-    return response
-  }
-
-  useEffect(() => {
-    fetchNews().then(news => {
-      if (news.results) {
-        setNewsSection(news.results)
-      }
-    })
-  }, [])
-
-  console.log(newsSections);
 
   const nextCard = () => {
     setNext(1);
@@ -49,16 +29,16 @@ function CardMain({ setNext }) {
           </div>
       </header>
       <div className="card">
-        <div className="part part-a">aaaa</div>
-        <div className="part part-b">bbbb</div>
-        <div className="part part-c">cccc</div>
-        <div className="part part-d">dddd</div>
-        <div className="part part-e">eeee</div>
+        <CardNews newsSections={newsSections[4]} part={"part-a"} />
+        <CardNews newsSections={newsSections[11]} part={"part-b"} />
+        <CardNews newsSections={newsSections[6]} part={"part-c"} />
+        <CardNews newsSections={newsSections[7]} part={"part-d"} />
+        <CardNews newsSections={newsSections[12]} part={"part-e"} />
         <button className="part part-setting" onClick={nextCard}>
             <img src={Settings} className="icon" alt="" />
         </button>
-        <div className="part part-weather">weather</div>
-        <div className="part part-pic">pic</div>
+        {/* <LocalWeather localWeather={localWeather} /> */}
+        <ImageOfTheDay imageOfTheDay={imageOfTheDay} />
       </div>
     </section>
   )

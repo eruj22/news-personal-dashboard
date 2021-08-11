@@ -1,10 +1,13 @@
 import React from "react";
 import { AiOutlineRight } from "react-icons/ai";
+import { getFromLocalStorage } from "../utils/helpers";
 
 const CardThird = ({ setNext }) => {
   const nextCard = () => {
     setNext(4);
   };
+
+  console.log(getFromLocalStorage("topics"));
 
   return (
     <div className="card card3">

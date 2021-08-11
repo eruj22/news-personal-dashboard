@@ -1,11 +1,7 @@
-import React, { useEffect,useState } from "react";
+import React from "react";
 import CardHolder from "./components/CardHolder";
 
-
-
 const App = () => {
-
-
   return (
     <main>
       <CardHolder />
