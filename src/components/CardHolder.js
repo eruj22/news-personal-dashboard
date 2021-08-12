@@ -4,10 +4,10 @@ import CardSecond from "./CardSecond";
 import CardThird from "./CardThird";
 import CardMain from "./CardMain";
 
-
 function CardHolder() {
-  const apiKey1 = "yekzyxA7dRlH6VWlHVaAoANRWQRIunGr";
-  const url1 = `https://api.nytimes.com/svc/topstories/v2/health.json?api-key=${apiKey1}`
+  const section = "business";
+  const apiKey1 = "a068c8d97f254708ab8a7f219b4b15f0";
+  const url1 = `https://newsapi.org/v2/top-headlines?country=us&category=${section}&apiKey=${apiKey1}`
   const apiKey2 = "22882275-5453122ff729f7627d455372d"
   const url2 = `https://pixabay.com/api/?key=${apiKey2}&image_type=photo&order=popular`
   const url3 = "http://ip-api.com/json/"
@@ -51,10 +51,11 @@ function CardHolder() {
 
   useEffect(() => {
     fetchNews().then(news => {
-      if (news.results) {
-        setNewsSection(news.results)
+      if (news.articles) {
+        setNewsSection(news.articles)
       }
     })
+
     fetchImageOfTheDay().then(image => {
       if (image.hits) {
         setImageOfTheDay(image.hits)
@@ -80,7 +81,7 @@ function CardHolder() {
     case 3:
       return <CardThird setNext={setNext} />;
     default:
-      return <CardMain setNext={setNext} newsSections={newsSections} imageOfTheDay={imageOfTheDay[0]} localWeather={localWeather} />;
+      return <CardMain setNext={setNext} newsSections={newsSections} section={section} imageOfTheDay={imageOfTheDay} localWeather={localWeather} />;
   }
 }
 

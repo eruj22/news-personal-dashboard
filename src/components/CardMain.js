@@ -7,12 +7,14 @@ import CardNews from "./CardNews"
 import ImageOfTheDay from './ImageOfTheDay'
 import LocalWeather from './LocalWeather'
 
-function CardMain({ setNext, newsSections, imageOfTheDay, localWeather }) {
+function CardMain({ setNext, newsSections, section, imageOfTheDay, localWeather }) {
   const name = getFromLocalStorage('name');
 
   const nextCard = () => {
     setNext(1);
   };
+
+  console.log(newsSections);
 
   return (
     <section className="mainCard">
@@ -29,16 +31,16 @@ function CardMain({ setNext, newsSections, imageOfTheDay, localWeather }) {
           </div>
       </header>
       <div className="card">
-        <CardNews newsSections={newsSections[4]} part={"part-a"} />
-        <CardNews newsSections={newsSections[11]} part={"part-b"} />
-        <CardNews newsSections={newsSections[6]} part={"part-c"} />
-        <CardNews newsSections={newsSections[7]} part={"part-d"} />
-        <CardNews newsSections={newsSections[12]} part={"part-e"} />
+        <CardNews newsSections={newsSections[4]} section={section} part={"part-a"} />
+        {/* <LocalWeather localWeather={localWeather} /> */}
+        <ImageOfTheDay imageOfTheDay={imageOfTheDay} />
+        <CardNews newsSections={newsSections[11]} section={section} part={"part-b"} />
+        <CardNews newsSections={newsSections[6]} section={section} part={"part-c"} />
+        <CardNews newsSections={newsSections[7]} section={section} part={"part-d"} />
+        <CardNews newsSections={newsSections[12]} section={section} part={"part-e"} />
         <button className="part part-setting" onClick={nextCard}>
             <img src={Settings} className="icon" alt="" />
         </button>
-        {/* <LocalWeather localWeather={localWeather} /> */}
-        <ImageOfTheDay imageOfTheDay={imageOfTheDay} />
       </div>
     </section>
   )
