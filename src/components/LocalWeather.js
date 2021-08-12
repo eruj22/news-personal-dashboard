@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 import { weatherIcon } from '../utils/helpers'
 
 function LocalWeather({ localWeather }) {
@@ -21,12 +21,12 @@ function LocalWeather({ localWeather }) {
   )
 }
 
-LocalWeather.propTypes = {
-  name: PropTypes.string,
-  country: PropTypes.string,
-  weather_code: PropTypes.number,
-  temperature: PropTypes.number,
-  weather_descriptions: PropTypes.array
-}
+// LocalWeather.propTypes = {
+//   name: PropTypes.string,
+//   country: PropTypes.string,
+//   weather_code: PropTypes.number,
+//   temperature: PropTypes.number,
+//   weather_descriptions: PropTypes.array
+// }
 
 export default LocalWeather

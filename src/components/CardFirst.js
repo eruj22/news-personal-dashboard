@@ -11,7 +11,6 @@ const CardFirst = ({ setNext }) => {
     setNext(2);
   };
 
-  // logic for checking if something is saved on local storage
   saveToLocalStorage("name", value);
 
   const onChange = (e) => {
