@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 2.3fr;
 
   &__left {
-    &-img {
+    &--img {
       border-radius: 1rem;
       transform: translate(20px, -30px);
     }
@@ -28,22 +28,22 @@
     }
   }
 
-  &-topics {
+  &__topics {
     width: 60%;
     margin: 2rem 2rem 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-
   }
 }
 
-.topic-btn {
+.topic__btn {
+  text-align: center;
   width: 105px;
   color: white;
   border-radius: 10px;
   font-size: 16px;
-  padding: .3rem 0;
+  padding: 0.3rem 0;
 }
 
 @media only screen and (max-width: 1200px) {

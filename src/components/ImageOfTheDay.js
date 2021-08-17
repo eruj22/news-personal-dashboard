@@ -1,15 +1,20 @@
-import React from 'react'
+import React from "react"
 import PropTypes from "prop-types"
+import { randomNumber } from "../utils/functions"
 
 function ImageOfTheDay({ imageOfTheDay }) {
-  const { webformatURL, largeImageURL } = imageOfTheDay
+  const number = randomNumber(20)
+  const { webformatURL, largeImageURL } = imageOfTheDay[number]
 
   return (
-    <a href={largeImageURL} className="part part-pic" target="_blank" rel="noreferrer">
-      <img src={webformatURL} alt="top of the day" />
-    </a>
+    <div className="part part__pic">
+      <div className="topic__btn technology">picture of the day</div>
+      <a href={largeImageURL} target="_blank" rel="noreferrer">
+        <img src={webformatURL} alt="top of the day" />
+      </a>
+    </div>
   )
-} 
+}
 
 ImageOfTheDay.propTypes = {
   webformatURL: PropTypes.string,

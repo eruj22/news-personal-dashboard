@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 2.3fr;
 
   &__left {
-    &-img {
+    &--img {
       border-radius: 1rem;
       transform: translate(20px, -30px);
     }
@@ -44,7 +44,7 @@
     grid-template-columns: 1fr;
 
     &__left {
-      &-img {
+      &--img {
         transform: translate(0, 0);
         width: 50%;
         margin: 0 auto;

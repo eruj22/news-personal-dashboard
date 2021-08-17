@@ -1,4 +1,4 @@
-.mainCard {
+.cardMain {
   width: 90%;
   max-width: 1400px;
   min-height: 730px;
@@ -26,12 +26,12 @@
       display: flex;
       align-items: center;
     }
-    
+
     input {
       width: 400px;
     }
 
-    .search-btn {
+    .search__btn {
       position: absolute;
       color: #fff;
       width: 50px;
@@ -44,72 +44,101 @@
       border-top-right-radius: 1.7rem;
     }
   }
+
   .icon {
     width: 70px;
   }
-  
+
   .part {
     background-color: #fff;
     padding: 1rem;
     border-radius: 1rem;
-  }
-
-  .part-a {
-    grid-area: part-a;
-  }
-  .part-b {
-    grid-area: part-b;
-  }
-  .part-c {
-    grid-area: part-c;
-  }
-  .part-d {
-    grid-area: part-d;
-  }
-  .part-e {
-    grid-area: part-e;
-  }
-  .part-weather {
-    grid-area: part-weather;
-    text-align: center;
-    font-weight: bold;
-
-    &-temperature {
-      font-size: 40px;
-    }
-
-    &-location {
-      margin-top: 1.5rem;
-      font-size: 22px;
-    }
-  }
-  .part-setting {
-    grid-area: part-setting;
+    text-align: start;
     display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .part-pic {
-    grid-area: part-pic;
+    flex-direction: column;
 
-    img {
-      display: block;
-      max-width: 300px;
-      margin: 0 auto;
+    &__setting {
+      grid-area: setting;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__pic {
+      grid-area: pic;
+
+      img {
+        display: block;
+        max-width: 300px;
+        margin: 0 auto;
+        border-radius: 1rem;
+      }
+
+      div {
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 1rem;
+        width: 150px;
+      }
+    }
+
+    &-a {
+      grid-area: a;
+    }
+
+    &-b {
+      grid-area: b;
+    }
+
+    &-c {
+      grid-area: c;
+    }
+
+    &-d {
+      grid-area: d;
+    }
+
+    &-e {
+      grid-area: e;
     }
   }
-  
+
   .card {
     display: grid;
     width: 86%;
     margin: 0 auto;
-    padding: 0 1.5rem 1.5rem;
-    grid-template-columns: repeat(7,1fr);
+    padding: 0 1.5rem 2.5rem;
+    grid-template-columns: repeat(7, 1fr);
     grid-template-rows: auto;
     gap: 1rem;
-    grid-template-areas: 
-      "part-a part-a part-a part-a part-pic part-pic part-pic"
-      "part-b part-b part-c part-c part-d part-d part-weather"
-      "part-e part-e part-e part-e part-e part-setting part-weather";
+    grid-template-areas:
+      "a a a a pic pic pic"
+      "b b c c d d weather"
+      "e e e e e setting weather";
+  }
+}
+
+@media (max-width: 1366px) {
+  .mainCard {
+    .card {
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-areas:
+        "a a a a a a a a"
+        "pic pic pic pic weather weather b b"
+        "pic pic pic pic weather weather c c"
+        "e e e e e setting c c"
+        "e e e e e setting d d";
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .mainCard {
+    .card {
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
   }
 }

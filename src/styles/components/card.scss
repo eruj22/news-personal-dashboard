@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   width: 90%;
   max-width: 1200px;
   min-height: 550px;
@@ -15,16 +16,16 @@
   }
 }
 
-.img-mobile {
+.img--mobile {
   display: none;
 }
 
 @media only screen and (max-width: 1200px) {
-  .img-mobile {
+  .img--mobile {
     display: block;
   }
 
-  .img-desktop {
+  .img--desktop {
     display: none;
   }
 }

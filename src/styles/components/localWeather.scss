@@ -1,0 +1,14 @@
+.weather {
+  grid-area: weather;
+  text-align: center;
+  font-weight: bold;
+
+  &__temperature {
+    font-size: 40px;
+  }
+
+  &__location {
+    margin-top: 1.5rem;
+    font-size: 22px;
+  }
+}
