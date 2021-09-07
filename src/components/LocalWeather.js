@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 import { weatherIcon } from "../utils/helpers"
 function LocalWeather({ localWeather }) {
-  console.log(localWeather)
   const { name, country } = localWeather.location
   const { weather_code, temperature, weather_descriptions } =
     localWeather.current

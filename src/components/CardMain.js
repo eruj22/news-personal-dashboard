@@ -1,31 +1,58 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { getFromLocalStorage } from "../utils/helpers"
-import Sunny from "../assets/cloudy_sunny.png"
 import Settings from "../assets/settings.png"
 import { FaSearch } from "react-icons/fa"
 import CardNews from "./CardNews"
 import ImageOfTheDay from "./ImageOfTheDay"
 import LocalWeather from "./LocalWeather"
+import { useStateValue } from "../utils/StateProvider"
+import { weatherIcon } from "../utils/helpers"
 
-function CardMain({
-  setNext,
-  newsSections,
-  section,
-  imageOfTheDay,
-  localWeather,
-}) {
-  const name = getFromLocalStorage("name")
+function CardMain({ setNextCard, section, newsSections, imageOfTheDay }) {
+  const [{ location }, dispatch] = useStateValue()
+  const [isLoading, setIsLoading] = useState(true)
+  const [localWeather, setLocalWeather] = useState([])
+  const visitorName = getFromLocalStorage("name")
+
+  const ulrWeatherApi = `http://api.weatherstack.com/current?access_key=${process.env.REACT_APP_API_KEY_WEATHER}&query=${location}`
+
+  const getWeather = async () => {
+    const response = await fetch(ulrWeatherApi)
+      .then((data) => data.json())
+      .catch((error) => error)
+    return response
+  }
 
   const nextCard = () => {
-    setNext(1)
+    setNextCard(1)
+  }
+
+  console.log(getFromLocalStorage("topics"))
+
+  useEffect(() => {
+    getWeather().then((weather) => {
+      if (weather) {
+        setLocalWeather(weather)
+        setIsLoading(false)
+      }
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  if (isLoading) {
+    return <div>loading...</div>
   }
 
   return (
     <section className="cardMain">
       <header className="cardMain__header">
         <div>
-          <img src={Sunny} className="icon" alt="" />
-          <h1>Good morning, {name ? name : "Unknown"}!</h1>
+          <img
+            src={weatherIcon(localWeather.current.weather_code)}
+            className="icon"
+            alt=""
+          />
+          <h1>Good morning, {visitorName ? visitorName : "Unknown"}!</h1>
         </div>
         <div>
           <input type="text" placeholder="search for stories..." />

@@ -5,16 +5,16 @@ import { AiOutlineRight } from "react-icons/ai"
 import { saveToLocalStorage } from "../utils/helpers"
 
 const CardFirst = ({ setNext }) => {
-  const [value, setValue] = useState("")
+  const [valueOfName, setValueOfName] = useState("")
 
   const nextCard = () => {
     setNext(2)
   }
 
-  saveToLocalStorage("name", value)
+  saveToLocalStorage("name", valueOfName)
 
   const onChange = (e) => {
-    setValue(e.target.value)
+    setValueOfName(e.target.value)
   }
   return (
     <div className="card card1">

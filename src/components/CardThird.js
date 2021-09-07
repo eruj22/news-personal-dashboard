@@ -1,13 +1,22 @@
-import React from "react";
-import { AiOutlineRight } from "react-icons/ai";
-import { getFromLocalStorage } from "../utils/helpers";
+import React, { useEffect } from "react"
+import { AiOutlineRight } from "react-icons/ai"
+import { useStateValue } from "../utils/StateProvider"
+import { getFromLocalStorage } from "../utils/helpers"
 
-const CardThird = ({ setNext }) => {
+const CardThird = ({ setNextCard }) => {
+  const [state, dispatch] = useStateValue()
+
   const nextCard = () => {
-    setNext(4);
-  };
+    setNextCard(4)
+  }
 
-  console.log(getFromLocalStorage("topics"));
+  useEffect(() => {
+    dispatch({
+      type: "GET_CATEGORIES",
+      category: getFromLocalStorage("topics"),
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className="card card3">
@@ -17,7 +26,7 @@ const CardThird = ({ setNext }) => {
         <AiOutlineRight className="icon" />
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default CardThird;
+export default CardThird

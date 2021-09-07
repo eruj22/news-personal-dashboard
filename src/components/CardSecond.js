@@ -5,11 +5,20 @@ import { AiOutlineRight } from "react-icons/ai"
 import { saveToLocalStorage } from "../utils/helpers"
 import TopicsButton from "./TopicsButton"
 
-const CardSecond = ({ setNext }) => {
+const CardSecond = ({ setNextCard }) => {
   const [chosenTopics, setChosenTopics] = useState([])
+  const newsCategories = [
+    "business",
+    "entertainment",
+    "general",
+    "health",
+    "science",
+    "sports",
+    "technology",
+  ]
 
   const nextCard = () => {
-    setNext(3)
+    setNextCard(3)
   }
 
   const saveTopics = (e) => {
@@ -39,15 +48,9 @@ const CardSecond = ({ setNext }) => {
         <h2>Welcome to your dashboard</h2>
         <span>Choose the topics for your news feed</span>
         <div className="card2__topics">
-          <TopicsButton topic={"technology"} saveTopics={saveTopics} />
-          <TopicsButton topic={"automobiles"} saveTopics={saveTopics} />
-          <TopicsButton topic={"science"} saveTopics={saveTopics} />
-          <TopicsButton topic={"sports"} saveTopics={saveTopics} />
-          <TopicsButton topic={"business"} saveTopics={saveTopics} />
-          <TopicsButton topic={"movies"} saveTopics={saveTopics} />
-          <TopicsButton topic={"travel"} saveTopics={saveTopics} />
-          <TopicsButton topic={"fashion"} saveTopics={saveTopics} />
-          <TopicsButton topic={"health"} saveTopics={saveTopics} />
+          {newsCategories.map((item) => (
+            <TopicsButton key={item} topic={item} saveTopics={saveTopics} />
+          ))}
         </div>
         <button className="card2__right--next" onClick={nextCard}>
           next
