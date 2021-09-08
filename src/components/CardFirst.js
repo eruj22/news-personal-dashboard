@@ -4,11 +4,11 @@ import globeMobile from "../assets/globe-mobile.jpg"
 import { AiOutlineRight } from "react-icons/ai"
 import { saveToLocalStorage } from "../utils/helpers"
 
-const CardFirst = ({ setNext }) => {
+const CardFirst = ({ setNextCard }) => {
   const [valueOfName, setValueOfName] = useState("")
 
   const nextCard = () => {
-    setNext(2)
+    setNextCard(2)
   }
 
   saveToLocalStorage("name", valueOfName)

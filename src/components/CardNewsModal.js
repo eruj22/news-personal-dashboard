@@ -3,19 +3,27 @@ import PropTypes from "prop-types"
 import { FaTimes } from "react-icons/fa"
 
 function CardNewsModal({ isModalOpen, closeModal, section, newsSections }) {
-  const { title, description, publishedAt, author, content } = newsSections
+  const { title, description, publishedAt, author, content, url } = newsSections
   const time = publishedAt.split("T")
+  console.log(newsSections)
 
   return (
     <div className={`${isModalOpen ? "modal modal--open" : "modal"}`}>
       <div className={`topic__btn ${section}`}>{section}</div>
       <h3>{title}</h3>
       <p className="italic">{description}</p>
-      <p>{author}</p>
       <p>
+        <b>Author: </b>
+        {author ? author : "Unknown"}
+      </p>
+      <p>
+        <b>Published at: </b>
         {time[0]} at {time[1].replace("Z", "")}
       </p>
       <p>{content}</p>
+      <a href={url} target="_blank" rel="noreferrer">
+        Read more
+      </a>
       <button className="modal__close-btn" onClick={closeModal}>
         <FaTimes />
       </button>

@@ -4,6 +4,7 @@ import { useStateValue } from "../utils/StateProvider"
 import { getFromLocalStorage } from "../utils/helpers"
 
 const CardThird = ({ setNextCard }) => {
+  // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useStateValue()
 
   const nextCard = () => {

@@ -7,14 +7,29 @@ import ImageOfTheDay from "./ImageOfTheDay"
 import LocalWeather from "./LocalWeather"
 import { useStateValue } from "../utils/StateProvider"
 import { weatherIcon } from "../utils/helpers"
+import Loader from "./Loader"
 
-function CardMain({ setNextCard, section, newsSections, imageOfTheDay }) {
+function CardMain({ setNextCard, imageOfTheDay, allCategories }) {
+  // eslint-disable-next-line no-unused-vars
   const [{ location }, dispatch] = useStateValue()
+  const [getNews, setGetNews] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [localWeather, setLocalWeather] = useState([])
-  const visitorName = getFromLocalStorage("name")
-
   const ulrWeatherApi = `http://api.weatherstack.com/current?access_key=${process.env.REACT_APP_API_KEY_WEATHER}&query=${location}`
+  const visitorName = getFromLocalStorage("name")
+  let urlNewsApi = []
+
+  if (allCategories.length < 5) {
+    do {
+      allCategories.push(allCategories[0])
+    } while (allCategories.length < 5)
+  }
+
+  for (let i = 0; i < 5; i++) {
+    urlNewsApi.push(
+      `https://newsapi.org/v2/top-headlines?country=us&category=${allCategories[i]}&apiKey=${process.env.REACT_APP_API_KEY_NEWS}`
+    )
+  }
 
   const getWeather = async () => {
     const response = await fetch(ulrWeatherApi)
@@ -27,20 +42,34 @@ function CardMain({ setNextCard, section, newsSections, imageOfTheDay }) {
     setNextCard(1)
   }
 
-  console.log(getFromLocalStorage("topics"))
+  const fetchNews = async () => {
+    return await Promise.all([
+      fetch(urlNewsApi[0]).then((news) => news.json()),
+      fetch(urlNewsApi[1]).then((news) => news.json()),
+      fetch(urlNewsApi[2]).then((news) => news.json()),
+      fetch(urlNewsApi[3]).then((news) => news.json()),
+      fetch(urlNewsApi[4]).then((news) => news.json()),
+    ])
+      .then((news) => {
+        setGetNews(news)
+        setIsLoading(false)
+      })
+      .catch((error) => error)
+  }
 
   useEffect(() => {
     getWeather().then((weather) => {
       if (weather) {
         setLocalWeather(weather)
-        setIsLoading(false)
       }
     })
+
+    fetchNews()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (isLoading) {
-    return <div>loading...</div>
+    return <Loader />
   }
 
   return (
@@ -54,7 +83,7 @@ function CardMain({ setNextCard, section, newsSections, imageOfTheDay }) {
           />
           <h1>Good morning, {visitorName ? visitorName : "Unknown"}!</h1>
         </div>
-        <div>
+        <div className="header__input">
           <input type="text" placeholder="search for stories..." />
           <button className="search__btn">
             <FaSearch />
@@ -63,30 +92,30 @@ function CardMain({ setNextCard, section, newsSections, imageOfTheDay }) {
       </header>
       <div className="card">
         <CardNews
-          newsSections={newsSections[4]}
-          section={section}
+          newsSections={getNews[0].articles[9]}
+          section={"featured"}
           part={"part-a"}
         />
         <LocalWeather localWeather={localWeather} />
         <ImageOfTheDay imageOfTheDay={imageOfTheDay} />
         <CardNews
-          newsSections={newsSections[11]}
-          section={section}
+          newsSections={getNews[1].articles[5]}
+          section={allCategories[1]}
           part={"part-b"}
         />
         <CardNews
-          newsSections={newsSections[6]}
-          section={section}
+          newsSections={getNews[2].articles[6]}
+          section={allCategories[2]}
           part={"part-c"}
         />
         <CardNews
-          newsSections={newsSections[7]}
-          section={section}
+          newsSections={getNews[3].articles[7]}
+          section={allCategories[3]}
           part={"part-d"}
         />
         <CardNews
-          newsSections={newsSections[12]}
-          section={section}
+          newsSections={getNews[4].articles[8]}
+          section={allCategories[4]}
           part={"part-e"}
         />
         <button className="part part__setting" onClick={nextCard}>

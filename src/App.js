@@ -4,6 +4,7 @@ import { useStateValue } from "./utils/StateProvider"
 import { getUserLocation } from "./utils/fetchApi"
 
 const App = () => {
+  // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useStateValue()
 
   useEffect(() => {

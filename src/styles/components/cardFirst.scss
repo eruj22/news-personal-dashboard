@@ -61,3 +61,32 @@
     }
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  .card1 {
+    &__left {
+      &--img {
+        width: 80%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .card1 {
+    &__right {
+      height: 400px;
+      padding: 2rem;
+      margin-left: 0;
+
+      input {
+        width: 80%;
+      }
+
+      &--next {
+        bottom: 2rem;
+        right: 2rem;
+      }
+    }
+  }
+}

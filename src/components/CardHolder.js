@@ -4,30 +4,21 @@ import CardSecond from "./CardSecond"
 import CardThird from "./CardThird"
 import CardMain from "./CardMain"
 import { fetchImageOfTheDay } from "../utils/fetchApi"
+import { useStateValue } from "../utils/StateProvider"
 
 function CardHolder() {
-  const section = "business"
-  const urlNewsApi = `https://newsapi.org/v2/top-headlines?country=us&category=${section}&apiKey=${process.env.REACT_APP_API_KEY_NEWS}`
-
+  // eslint-disable-next-line no-unused-vars
+  const [{ category }, dispatch] = useStateValue()
+  let allCategories
   const [nextCard, setNextCard] = useState(1)
 
-  const [newsSections, setNewsSection] = useState([])
-  const [imageOfTheDay, setImageOfTheDay] = useState([])
-
-  const fetchNews = async () => {
-    const response = await fetch(urlNewsApi)
-      .then((data) => data.json())
-      .catch((error) => error)
-    return response
+  if (category.length > 0) {
+    allCategories = category.toString().split(",")
   }
 
-  useEffect(() => {
-    fetchNews().then((news) => {
-      if (news.articles) {
-        setNewsSection(news.articles)
-      }
-    })
+  const [imageOfTheDay, setImageOfTheDay] = useState([])
 
+  useEffect(() => {
     fetchImageOfTheDay().then((image) => {
       if (image.hits) {
         setImageOfTheDay(image.hits)
@@ -38,18 +29,17 @@ function CardHolder() {
 
   switch (nextCard) {
     case 1:
-      return <CardFirst setNext={setNextCard} />
+      return <CardFirst setNextCard={setNextCard} />
     case 2:
-      return <CardSecond setNext={setNextCard} />
+      return <CardSecond setNextCard={setNextCard} />
     case 3:
-      return <CardThird setNext={setNextCard} />
+      return <CardThird setNextCard={setNextCard} />
     default:
       return (
         <CardMain
-          setNext={setNextCard}
-          newsSections={newsSections}
-          section={section}
+          setNextCard={setNextCard}
           imageOfTheDay={imageOfTheDay}
+          allCategories={allCategories}
         />
       )
   }
