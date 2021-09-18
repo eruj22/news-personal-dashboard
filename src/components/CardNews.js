@@ -19,8 +19,8 @@ function CardNews({ newsSections, part, section }) {
       <>
         <button onClick={openModal} className={`part ${part}`}>
           <div className={`topic__btn ${section}`}>{section}</div>
-          <h3>{title}</h3>
-          <p className="italic">{description}</p>
+          <h3 className="part__title">{title}</h3>
+          <p className="italic part__text">{description}</p>
         </button>
         <CardNewsModal
           isModalOpen={isModalOpen}
@@ -35,7 +35,7 @@ function CardNews({ newsSections, part, section }) {
       <>
         <button onClick={openModal} className={`part ${part}`}>
           <div className={`topic__btn ${section}`}>{section}</div>
-          <h3>{title}</h3>
+          <h3 className="part__title">{title}</h3>
         </button>
         <CardNewsModal
           isModalOpen={isModalOpen}

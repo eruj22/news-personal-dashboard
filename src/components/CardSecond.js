@@ -22,6 +22,7 @@ const CardSecond = ({ setNextCard }) => {
   }
 
   const saveTopics = (e) => {
+    e.target.style.opacity = 0.7
     const value = e.target.innerText
     if (chosenTopics.length < 5) {
       setChosenTopics((arr) => [...arr, value])
@@ -31,28 +32,28 @@ const CardSecond = ({ setNextCard }) => {
   saveToLocalStorage("topics", chosenTopics)
 
   return (
-    <div className="card card2">
-      <div className="card2__left">
+    <div className="card cardSecond">
+      <div className="cardSecond__left">
         <img
-          className="card2__left--img img--desktop"
+          className="cardSecond__image image--desktop"
           src={globeDesktop}
-          alt="globe"
+          alt="small globe in a hand"
         />
         <img
-          className="card2__left--img img--mobile"
+          className="cardSecond__image image--mobile"
           src={globeMobile}
-          alt="globe"
+          alt="small globe in a hand"
         />
       </div>
-      <div className="card2__right">
-        <h2>Welcome to your dashboard</h2>
-        <span>Choose the topics for your news feed</span>
-        <div className="card2__topics">
+      <div className="cardSecond__right">
+        <h2 className="rightSide__title">Welcome to your dashboard</h2>
+        <span className="card__span">Choose the topics for your news feed</span>
+        <div className="cardSecond__topics">
           {newsCategories.map((item) => (
             <TopicsButton key={item} topic={item} saveTopics={saveTopics} />
           ))}
         </div>
-        <button className="card2__right--next" onClick={nextCard}>
+        <button className="cardSecond__next" onClick={nextCard}>
           next
           <AiOutlineRight className="icon" />
         </button>

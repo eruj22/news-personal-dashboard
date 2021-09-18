@@ -15,12 +15,16 @@
   visibility: hidden;
   z-index: -1;
 
+  &__title {
+    margin-top: 1rem;
+  }
+
   &--open {
     visibility: visible;
     z-index: 10;
   }
 
-  &__close-btn {
+  &__closeBtn {
     position: absolute;
     top: 1rem;
     right: 1rem;

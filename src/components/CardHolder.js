@@ -9,14 +9,13 @@ import { useStateValue } from "../utils/StateProvider"
 function CardHolder() {
   // eslint-disable-next-line no-unused-vars
   const [{ category }, dispatch] = useStateValue()
-  let allCategories
   const [nextCard, setNextCard] = useState(1)
+  const [imageOfTheDay, setImageOfTheDay] = useState([])
+  let allCategories
 
   if (category.length > 0) {
     allCategories = category.toString().split(",")
   }
-
-  const [imageOfTheDay, setImageOfTheDay] = useState([])
 
   useEffect(() => {
     fetchImageOfTheDay().then((image) => {

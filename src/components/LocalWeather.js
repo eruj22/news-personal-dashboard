@@ -10,13 +10,17 @@ function LocalWeather({ localWeather }) {
 
   return (
     <div className="part weather">
-      <img src={icon} alt="" />
-      <p className="weather__temperature">{temperature}°C</p>
-      <p>{weather_descriptions[0]}</p>
-      <p className="weather__location">
-        {name},<br />
-        {country}
-      </p>
+      <div className="weather__container">
+        <img className="weather__image" src={icon} alt="" />
+        <div className="weather__text">
+          <p className="weather__temperature">{temperature}°C</p>
+          <p>{weather_descriptions[0]}</p>
+          <p className="weather__location">
+            {name},<br />
+            {country}
+          </p>
+        </div>
+      </div>
     </div>
   )
 }

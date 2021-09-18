@@ -20,9 +20,9 @@ const CardThird = ({ setNextCard }) => {
   }, [])
 
   return (
-    <div className="card card3">
+    <div className="card cardThird">
       <h2>You are all set!</h2>
-      <button className="card3--next" onClick={nextCard}>
+      <button className="cardThird__next" onClick={nextCard}>
         Take me to my dashboard
         <AiOutlineRight className="icon" />
       </button>

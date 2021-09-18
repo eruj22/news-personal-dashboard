@@ -16,6 +16,39 @@ export const getFromLocalStorage = (name) => {
   return localStorage.getItem(name)
 }
 
+export const dataForNews = [
+  {
+    id: 0,
+    article: 9,
+    section: "featured",
+    style: "part-a",
+  },
+  {
+    id: 1,
+    article: 5,
+    section: 1,
+    style: "part-b",
+  },
+  {
+    id: 2,
+    article: 6,
+    section: 2,
+    style: "part-c",
+  },
+  {
+    id: 3,
+    article: 7,
+    section: 3,
+    style: "part-d",
+  },
+  {
+    id: 4,
+    article: 8,
+    section: 4,
+    style: "part-e",
+  },
+]
+
 export const weatherIcon = (code) => {
   let imgLink = ""
   switch (code) {

@@ -17,24 +17,30 @@ const CardFirst = ({ setNextCard }) => {
     setValueOfName(e.target.value)
   }
   return (
-    <div className="card card1">
-      <div className="card1__left">
+    <div className="card cardFirst">
+      <div className="cardFirst__left">
         <img
-          className="card1__left--img img--desktop"
+          className="cardFirst__image image--desktop"
           src={globeDesktop}
-          alt="globe"
+          alt="small globe in a hand"
         />
         <img
-          className="card1__left--img img--mobile"
+          className="cardFirst__image image--mobile"
           src={globeMobile}
-          alt="globe"
+          alt="small globe in a hand"
         />
       </div>
-      <div className="card1__right">
-        <h2>Welcome to your dashboard</h2>
-        <span>What's your name?</span>
-        <input type="text" name="name" id="name" onChange={onChange} />
-        <button className="card1__right--next" onClick={nextCard}>
+      <div className="cardFirst__right rightSide">
+        <h2 className="rightSide__title">Welcome to your dashboard</h2>
+        <span className="card__span">What's your name?</span>
+        <input
+          className="rightSide__input"
+          type="text"
+          name="name"
+          id="name"
+          onChange={onChange}
+        />
+        <button className="cardFirst__next" onClick={nextCard}>
           next
           <AiOutlineRight className="icon" />
         </button>

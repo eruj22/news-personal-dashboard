@@ -8,10 +8,11 @@ import LocalWeather from "./LocalWeather"
 import { useStateValue } from "../utils/StateProvider"
 import { weatherIcon } from "../utils/helpers"
 import Loader from "./Loader"
+import { dataForNews } from "../utils/helpers"
 
 function CardMain({ setNextCard, imageOfTheDay, allCategories }) {
   // eslint-disable-next-line no-unused-vars
-  const [{ location }, dispatch] = useStateValue()
+  const [{ location }, dispatch] = useStateValue([])
   const [getNews, setGetNews] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [localWeather, setLocalWeather] = useState([])
@@ -74,50 +75,52 @@ function CardMain({ setNextCard, imageOfTheDay, allCategories }) {
 
   return (
     <section className="cardMain">
-      <header className="cardMain__header">
-        <div>
+      <header className="header">
+        <div className="header__greeting">
           <img
             src={weatherIcon(localWeather.current.weather_code)}
             className="icon"
             alt=""
           />
-          <h1>Good morning, {visitorName ? visitorName : "Unknown"}!</h1>
+          <h1 className="header__title">
+            Good morning, {visitorName ? visitorName : "Unknown"}!
+          </h1>
         </div>
-        <div className="header__input">
-          <input type="text" placeholder="search for stories..." />
-          <button className="search__btn">
+        <div className="header__inputContainer">
+          <input
+            className="header__input"
+            type="text"
+            placeholder="search for stories..."
+          />
+          <button className="header__btn">
             <FaSearch />
           </button>
         </div>
       </header>
       <div className="card">
-        <CardNews
-          newsSections={getNews[0].articles[9]}
-          section={"featured"}
-          part={"part-a"}
-        />
         <LocalWeather localWeather={localWeather} />
         <ImageOfTheDay imageOfTheDay={imageOfTheDay} />
-        <CardNews
-          newsSections={getNews[1].articles[5]}
-          section={allCategories[1]}
-          part={"part-b"}
-        />
-        <CardNews
-          newsSections={getNews[2].articles[6]}
-          section={allCategories[2]}
-          part={"part-c"}
-        />
-        <CardNews
-          newsSections={getNews[3].articles[7]}
-          section={allCategories[3]}
-          part={"part-d"}
-        />
-        <CardNews
-          newsSections={getNews[4].articles[8]}
-          section={allCategories[4]}
-          part={"part-e"}
-        />
+        {dataForNews.map((item) => {
+          const { article, section, style, id } = item
+          if (id === 0) {
+            return (
+              <CardNews
+                key={id}
+                newsSections={getNews[id].articles[article]}
+                section={section}
+                part={style}
+              />
+            )
+          }
+          return (
+            <CardNews
+              key={id}
+              newsSections={getNews[id].articles[article]}
+              section={allCategories[section]}
+              part={style}
+            />
+          )
+        })}
         <button className="part part__setting" onClick={nextCard}>
           <img src={Settings} className="icon" alt="" />
         </button>

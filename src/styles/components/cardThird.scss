@@ -1,10 +1,10 @@
-.card3 {
+.cardThird {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  &--next {
+  &__next {
     margin-top: 2rem;
     color: $clr-blue-text;
     display: inline-flex;

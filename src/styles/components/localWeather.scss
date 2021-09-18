@@ -1,14 +1,36 @@
 .weather {
   grid-area: weather;
-  text-align: center;
   font-weight: bold;
 
   &__temperature {
     font-size: 40px;
   }
 
+  &__image {
+    max-width: 160px;
+  }
+
   &__location {
     margin-top: 1.5rem;
     font-size: 22px;
+  }
+
+  &__text {
+    padding-left: 1rem;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .weather {
+    &__container {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+
+    &__image,
+    &__text {
+      flex: 0.5;
+    }
   }
 }

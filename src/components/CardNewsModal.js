@@ -5,12 +5,11 @@ import { FaTimes } from "react-icons/fa"
 function CardNewsModal({ isModalOpen, closeModal, section, newsSections }) {
   const { title, description, publishedAt, author, content, url } = newsSections
   const time = publishedAt.split("T")
-  console.log(newsSections)
 
   return (
     <div className={`${isModalOpen ? "modal modal--open" : "modal"}`}>
       <div className={`topic__btn ${section}`}>{section}</div>
-      <h3>{title}</h3>
+      <h3 className="modal__title">{title}</h3>
       <p className="italic">{description}</p>
       <p>
         <b>Author: </b>
@@ -24,7 +23,7 @@ function CardNewsModal({ isModalOpen, closeModal, section, newsSections }) {
       <a href={url} target="_blank" rel="noreferrer">
         Read more
       </a>
-      <button className="modal__close-btn" onClick={closeModal}>
+      <button className="modal__closeBtn" onClick={closeModal}>
         <FaTimes />
       </button>
     </div>
