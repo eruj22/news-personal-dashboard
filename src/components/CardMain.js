@@ -78,7 +78,9 @@ function CardMain({ setNextCard, imageOfTheDay, allCategories }) {
       <header className="header">
         <div className="header__greeting">
           <img
-            src={weatherIcon(localWeather.current.weather_code)}
+            src={weatherIcon(
+              localWeather.success ? localWeather.current.weather_code : null
+            )}
             className="icon"
             alt=""
           />

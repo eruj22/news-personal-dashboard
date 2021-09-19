@@ -1,7 +1,18 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { weatherIcon } from "../utils/helpers"
+import sunny from "../assets/sunny.png"
 function LocalWeather({ localWeather }) {
+  if (localWeather.success === false) {
+    return (
+      <div className="centerText part weather">
+        There is an error with displaying weather. Here you have a sun for
+        brightening your day.
+        <img src={sunny} alt="sun is shining bright" />
+      </div>
+    )
+  }
+
   const { name, country } = localWeather.location
   const { weather_code, temperature, weather_descriptions } =
     localWeather.current
