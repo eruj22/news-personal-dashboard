@@ -9,10 +9,12 @@ import { useStateValue } from "../utils/StateProvider"
 import { weatherIcon } from "../utils/helpers"
 import Loader from "./Loader"
 import { dataForNews } from "../utils/helpers"
+import { fetchImageOfTheDay } from "../utils/fetchApi"
 
-function CardMain({ setNextCard, imageOfTheDay, allCategories }) {
+function CardMain({ allCategories }) {
   // eslint-disable-next-line no-unused-vars
   const [{ location }, dispatch] = useStateValue([])
+  const [imageOfTheDay, setImageOfTheDay] = useState([])
   const [getNews, setGetNews] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [localWeather, setLocalWeather] = useState([])
@@ -40,7 +42,9 @@ function CardMain({ setNextCard, imageOfTheDay, allCategories }) {
   }
 
   const nextCard = () => {
-    setNextCard(1)
+    dispatch({
+      type: "RESET",
+    })
   }
 
   const fetchNews = async () => {
@@ -65,6 +69,12 @@ function CardMain({ setNextCard, imageOfTheDay, allCategories }) {
       }
     })
 
+    fetchImageOfTheDay().then((image) => {
+      if (image.hits) {
+        setImageOfTheDay(image.hits)
+      }
+    })
+
     fetchNews()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -78,9 +88,7 @@ function CardMain({ setNextCard, imageOfTheDay, allCategories }) {
       <header className="header">
         <div className="header__greeting">
           <img
-            src={weatherIcon(
-              localWeather.success ? localWeather.current.weather_code : null
-            )}
+            src={weatherIcon(localWeather && localWeather.current.weather_code)}
             className="icon"
             alt=""
           />

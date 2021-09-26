@@ -26,6 +26,23 @@
     bottom: 2rem;
     right: 6rem;
   }
+
+  &__topics {
+    width: 60%;
+    margin: 2rem 2rem 0 7rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+.topic__btn {
+  text-align: center;
+  width: 120px;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 0.3rem 0;
 }
 
 .rightSide {
@@ -53,6 +70,15 @@
       position: relative;
       height: 300px;
     }
+
+    &__topics {
+      margin: 0 auto;
+      width: 60%;
+
+      button {
+        justify-self: center;
+      }
+    }
   }
 
   .rightSide {
@@ -67,20 +93,29 @@
     &__image {
       width: 80%;
     }
+
+    &__right {
+      height: 350px;
+    }
+
+    &__topics {
+      width: 60%;
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 650px) {
   .cardFirst {
     &__right {
-      height: 400px;
+      height: 500px;
       padding: 2rem;
       margin-left: 0;
+    }
 
-      &--next {
-        bottom: 2rem;
-        right: 2rem;
-      }
+    &__topics {
+      width: 90%;
+      margin-top: 2rem;
     }
   }
 

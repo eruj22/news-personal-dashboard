@@ -1,6 +1,7 @@
 export const initialState = {
   location: "",
   category: [],
+  cardNumber: 1,
 }
 
 const reducer = (state, action) => {
@@ -17,8 +18,21 @@ const reducer = (state, action) => {
         category: [...state.category, action.category],
       }
 
+    case "NEXT_CARD":
+      return {
+        ...state,
+        cardNumber: state.cardNumber + 1,
+      }
+
+    case "RESET":
+      return {
+        location: "",
+        category: [],
+        cardNumber: 1,
+      }
+
     default:
-      return state
+      throw new Error("error")
   }
 }
 
