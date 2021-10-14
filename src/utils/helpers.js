@@ -16,6 +16,16 @@ export const getFromLocalStorage = (name) => {
   return localStorage.getItem(name)
 }
 
+export const newsCategories = [
+  "business",
+  "entertainment",
+  "general",
+  "health",
+  "science",
+  "sports",
+  "technology",
+]
+
 export const dataForNews = [
   {
     id: 0,

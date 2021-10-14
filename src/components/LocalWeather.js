@@ -37,11 +37,7 @@ function LocalWeather({ localWeather }) {
 }
 
 LocalWeather.propTypes = {
-  name: PropTypes.string,
-  country: PropTypes.string,
-  weather_code: PropTypes.number,
-  temperature: PropTypes.number,
-  weather_descriptions: PropTypes.array,
+  localWeather: PropTypes.object.isRequired,
 }
 
 export default LocalWeather

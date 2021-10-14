@@ -24,8 +24,8 @@ function TopicsButton({ topic, saveTopics }) {
 }
 
 TopicsButton.propTypes = {
-  topic: PropTypes.string,
-  saveTopics: PropTypes.func,
+  topic: PropTypes.string.isRequired,
+  saveTopics: PropTypes.func.isRequired,
 }
 
 export default TopicsButton

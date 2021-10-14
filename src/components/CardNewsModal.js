@@ -31,8 +31,10 @@ function CardNewsModal({ isModalOpen, closeModal, section, newsSections }) {
 }
 
 CardNewsModal.propTypes = {
-  section: PropTypes.string,
-  newsSections: PropTypes.object,
+  section: PropTypes.string.isRequired,
+  newsSections: PropTypes.object.isRequired,
+  isModalOpen: PropTypes.bool.isRequired,
+  closeModal: PropTypes.func.isRequired,
 }
 
 export default CardNewsModal

@@ -107,7 +107,7 @@ function CardMain({ allCategories }) {
           </button>
         </div>
       </header>
-      <div className="card">
+      <div className="cardGrid">
         <LocalWeather localWeather={localWeather} />
         <ImageOfTheDay imageOfTheDay={imageOfTheDay} />
         {dataForNews.map((item) => {

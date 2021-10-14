@@ -9,7 +9,7 @@ const App = () => {
 
   useEffect(() => {
     getUserLocation().then((location) => {
-      if (location.city) {
+      if (location) {
         dispatch({
           type: "GET_LOCATION",
           location: location.city,

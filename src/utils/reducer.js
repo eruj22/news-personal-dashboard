@@ -26,7 +26,7 @@ const reducer = (state, action) => {
 
     case "RESET":
       return {
-        location: "",
+        location: state.location,
         category: [],
         cardNumber: 1,
       }

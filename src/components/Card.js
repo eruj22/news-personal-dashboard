@@ -5,21 +5,12 @@ import { AiOutlineRight } from "react-icons/ai"
 import { saveToLocalStorage } from "../utils/helpers"
 import { useStateValue } from "../utils/StateProvider"
 import TopicsButton from "./TopicsButton"
+import { newsCategories } from "../utils/helpers"
 
 function Card() {
   const [{ cardNumber }, dispatch] = useStateValue([])
   const [valueOfName, setValueOfName] = useState("")
   const [chosenTopics, setChosenTopics] = useState([])
-
-  const newsCategories = [
-    "business",
-    "entertainment",
-    "general",
-    "health",
-    "science",
-    "sports",
-    "technology",
-  ]
 
   saveToLocalStorage("name", valueOfName)
   saveToLocalStorage("topics", chosenTopics)
@@ -86,7 +77,7 @@ function Card() {
   }
 
   return (
-    <div className="card cardFirst">
+    <section className="card cardFirst">
       <div className="cardFirst__left">
         <img
           className="cardFirst__image image--desktop"
@@ -107,7 +98,7 @@ function Card() {
           <AiOutlineRight className="icon" />
         </button>
       </div>
-    </div>
+    </section>
   )
 }
 

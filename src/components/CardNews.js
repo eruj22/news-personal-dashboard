@@ -49,8 +49,9 @@ function CardNews({ newsSections, part, section }) {
 }
 
 CardNews.propTypes = {
-  part: PropTypes.string,
-  section: PropTypes.string,
+  part: PropTypes.string.isRequired,
+  section: PropTypes.string.isRequired,
+  newsSections: PropTypes.object.isRequired,
 }
 
 export default CardNews

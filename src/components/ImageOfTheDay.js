@@ -21,8 +21,7 @@ function ImageOfTheDay({ imageOfTheDay }) {
 }
 
 ImageOfTheDay.propTypes = {
-  webformatURL: PropTypes.string,
-  largeImageURL: PropTypes.string,
+  imageOfTheDay: PropTypes.array.isRequired,
 }
 
 export default ImageOfTheDay

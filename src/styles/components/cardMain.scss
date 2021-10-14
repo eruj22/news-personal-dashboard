@@ -1,7 +1,7 @@
 .cardMain {
   width: 90%;
-  max-width: 1400px;
-  min-height: 730px;
+  max-width: 1200px;
+  min-height: 550px;
   margin: 2rem auto;
   background-color: #f4f7f9;
   border-radius: 2rem;
@@ -63,7 +63,8 @@
     }
   }
 
-  .card {
+  .cardGrid {
+    position: relative;
     display: grid;
     width: 86%;
     margin: 0 auto;
@@ -120,7 +121,7 @@
 
 @media only screen and (max-width: 1366px) {
   .cardMain {
-    .card {
+    .cardGrid {
       grid-template-columns: repeat(8, 1fr);
       grid-template-areas:
         "a a a a a a a a"
@@ -140,7 +141,7 @@
   .cardMain {
     padding: 1rem 0 2rem;
 
-    .card {
+    .cardGrid {
       max-width: 500px;
       display: flex;
       flex-direction: column;
