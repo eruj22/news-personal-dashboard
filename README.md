@@ -27,6 +27,8 @@
 
 This app is your personal dashboard. In first few pages you input your name and select topics that you wish to view. Based on these you get personalized news on the main page. You can click on each news section to view modal with more details. On the main page you also get current weather based on your location from IP. Additionally, you get a picture of the day based on most popular picture from Pixabay.
 
+Note: link to the production app isn't available, because I would need to pay for production use of NewsAPI.
+
 ### Built With
 
 The project is build with these technologies:

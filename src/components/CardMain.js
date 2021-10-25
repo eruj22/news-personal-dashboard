@@ -22,7 +22,7 @@ function CardMain({ allCategories, currentUserCity }) {
   if (!currentUserCity) {
     currentUserCity = "London"
   }
-  const ulrWeatherApi = `http://api.openweathermap.org/data/2.5/weather?q=${currentUserCity}&appid=${process.env.REACT_APP_API_KEY_WEATHER}`
+  const ulrWeatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${currentUserCity}&appid=${process.env.REACT_APP_API_KEY_WEATHER}`
   const urlPhotoApi = `https://pixabay.com/api/?key=${process.env.REACT_APP_API_KEY_PICTURE}&image_type=photo&order=popular`
 
   if (allCategories.length < 5) {
