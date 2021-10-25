@@ -1,6 +1,6 @@
 # News Personal Dashboard
 
-![gif](https://user-images.githubusercontent.com/80893722/138708940-a1f6b4c0-6441-4898-8a3d-b66fc572dde1.gif)
+![Hnet-image](https://user-images.githubusercontent.com/80893722/138709379-f6b765e3-0a05-41a6-be55-b7d23493bc79.gif)
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
