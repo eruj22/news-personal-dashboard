@@ -1,5 +1,7 @@
 # News Personal Dashboard
 
+![gif](https://user-images.githubusercontent.com/80893722/138708940-a1f6b4c0-6441-4898-8a3d-b66fc572dde1.gif)
+
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
