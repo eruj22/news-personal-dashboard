@@ -1,27 +1,24 @@
-import React, { useEffect } from "react"
+import React, { useState } from "react"
 import CardHolder from "./components/CardHolder"
-import { useStateValue } from "./utils/StateProvider"
-import { getUserLocation } from "./utils/fetchApi"
 
 const App = () => {
   // eslint-disable-next-line no-unused-vars
-  const [state, dispatch] = useStateValue()
+  const [userLocation, setUserLocation] = useState({})
 
-  useEffect(() => {
-    getUserLocation().then((location) => {
-      if (location) {
-        dispatch({
-          type: "GET_LOCATION",
-          location: location.city,
-        })
-      }
+  const showLocation = (position) => {
+    let latitude = position.coords.latitude
+    let longitude = position.coords.longitude
+    setUserLocation({
+      latitude,
+      longitude,
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }
+
+  navigator.geolocation.getCurrentPosition(showLocation)
 
   return (
     <main>
-      <CardHolder />
+      <CardHolder userLocation={userLocation} />
     </main>
   )
 }

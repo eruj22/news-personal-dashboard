@@ -6,12 +6,6 @@ export const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "GET_LOCATION":
-      return {
-        ...state,
-        location: action.location,
-      }
-
     case "GET_CATEGORIES":
       return {
         ...state,

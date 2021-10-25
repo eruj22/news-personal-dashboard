@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { weatherIcon } from "../utils/helpers"
 import sunny from "../assets/sunny.png"
 function LocalWeather({ localWeather }) {
-  if (localWeather.success === false) {
+  if (localWeather.cod === 401) {
     return (
       <div className="centerText part weather">
         There is an error with displaying weather. Here you have a sun for
@@ -13,23 +13,24 @@ function LocalWeather({ localWeather }) {
     )
   }
 
-  const { name, country } = localWeather.location
-  const { weather_code, temperature, weather_descriptions } =
-    localWeather.current
+  const { name, main, weather } = localWeather
 
-  const icon = weatherIcon(weather_code)
+  const icon = weatherIcon(localWeather.weather[0].id)
 
   return (
     <div className="part weather">
       <div className="weather__container">
-        <img className="weather__image" src={icon} alt="" />
+        <img
+          className="weather__image"
+          src={icon}
+          alt={`current weather in ${name} is ${localWeather.weather[0].description}`}
+        />
         <div className="weather__text">
-          <p className="weather__temperature">{temperature}°C</p>
-          <p>{weather_descriptions[0]}</p>
-          <p className="weather__location">
-            {name},<br />
-            {country}
+          <p className="weather__temperature">
+            {Math.round(main.temp - 273)}°C
           </p>
+          <p>{weather[0].description}</p>
+          <p className="weather__location">{name}</p>
         </div>
       </div>
     </div>

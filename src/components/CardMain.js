@@ -9,18 +9,21 @@ import { useStateValue } from "../utils/StateProvider"
 import { weatherIcon } from "../utils/helpers"
 import Loader from "./Loader"
 import { dataForNews } from "../utils/helpers"
-import { fetchImageOfTheDay } from "../utils/fetchApi"
 
-function CardMain({ allCategories }) {
+function CardMain({ allCategories, currentUserCity }) {
   // eslint-disable-next-line no-unused-vars
-  const [{ location }, dispatch] = useStateValue([])
+  const [state, dispatch] = useStateValue([])
   const [imageOfTheDay, setImageOfTheDay] = useState([])
   const [getNews, setGetNews] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [localWeather, setLocalWeather] = useState([])
-  const ulrWeatherApi = `http://api.weatherstack.com/current?access_key=${process.env.REACT_APP_API_KEY_WEATHER}&query=${location}`
   const visitorName = getFromLocalStorage("name")
   let urlNewsApi = []
+  if (!currentUserCity) {
+    currentUserCity = "London"
+  }
+  const ulrWeatherApi = `http://api.openweathermap.org/data/2.5/weather?q=${currentUserCity}&appid=${process.env.REACT_APP_API_KEY_WEATHER}`
+  const urlPhotoApi = `https://pixabay.com/api/?key=${process.env.REACT_APP_API_KEY_PICTURE}&image_type=photo&order=popular`
 
   if (allCategories.length < 5) {
     do {
@@ -34,10 +37,17 @@ function CardMain({ allCategories }) {
     )
   }
 
+  const fetchImageOfTheDay = async () => {
+    const response = await fetch(urlPhotoApi)
+      .then((data) => data.json())
+      .catch((error) => console.log(error))
+    return response
+  }
+
   const getWeather = async () => {
     const response = await fetch(ulrWeatherApi)
       .then((data) => data.json())
-      .catch((error) => error)
+      .catch((error) => console.log(error))
     return response
   }
 
@@ -59,7 +69,7 @@ function CardMain({ allCategories }) {
         setGetNews(news)
         setIsLoading(false)
       })
-      .catch((error) => error)
+      .catch((error) => console.log(error))
   }
 
   useEffect(() => {
@@ -88,9 +98,12 @@ function CardMain({ allCategories }) {
       <header className="header">
         <div className="header__greeting">
           <img
-            src={weatherIcon(localWeather && localWeather.current.weather_code)}
+            src={localWeather && weatherIcon(localWeather.weather[0].id)}
             className="icon"
-            alt=""
+            alt={
+              localWeather &&
+              `current weather is ${localWeather.weather[0].description}`
+            }
           />
           <h1 className="header__title">
             Good morning, {visitorName ? visitorName : "Unknown"}!

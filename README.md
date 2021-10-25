@@ -36,7 +36,7 @@ The project is build with these technologies:
 - React
 - SASS
 - React Icons
-- APIs: NewsAPI, Weatherstack, Pixabay and IP-API
+- APIs: NewsAPI, OpenWeather, Pixabay and Geoapify
 
 ### Possible improvements
 
