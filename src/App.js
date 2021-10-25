@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import CardHolder from "./components/CardHolder"
 
 const App = () => {
@@ -14,7 +14,9 @@ const App = () => {
     })
   }
 
-  navigator.geolocation.getCurrentPosition(showLocation)
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(showLocation)
+  }, [])
 
   return (
     <main>
