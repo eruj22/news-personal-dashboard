@@ -1,5 +1,7 @@
 # News Personal Dashboard
 
+![Hnet-image](https://user-images.githubusercontent.com/80893722/138709379-f6b765e3-0a05-41a6-be55-b7d23493bc79.gif)
+
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
