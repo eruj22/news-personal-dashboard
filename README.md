@@ -43,7 +43,7 @@ The project is build with these technologies:
 The app can be improved in a few ways:
 
 - In the news modal there could be longer news article by paying for better API package
-- I could also implement search function, to get specific news
+- I could also implement search function to get specific news
 
 <!-- GETTING STARTED -->
 
@@ -65,7 +65,7 @@ npm install npm@latest -g
 1. Clone the repo
 
 ```sh
-git clone https://github.com/eruj22/cat-wiki
+git clone https://github.com/eruj22/news-personal-dashboard
 ```
 
 2. Install NPM packages
